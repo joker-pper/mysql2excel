@@ -16,11 +16,17 @@
     datasource.password: 123456
     datasource.driver-class-name: com.mysql.cj.jdbc.Driver
       
-### mysql2excel.sql
+### 测试相关:
+
+#### mysql2excel.sql
 
 ---
-   + [/src/test/resources/mysql2excel.sql](https://github.com/joker-pper/mysql2excel/blob/master/src/test/resources/mysql2excel.sql)
+   + [/src/test/resources/mysql2excel.sql](src/test/resources/mysql2excel.sql)
 ---
+
+#### 导出效果
+
+![effect](src/test/resources/effect.png)
 
 ## 命令
 
