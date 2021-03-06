@@ -43,7 +43,7 @@ java -jar mysql2excel-1.0.0-SNAPSHOT.jar -data-source ../src/test/resources/db.p
 # 导出xls (指定table - user) 
 java -jar mysql2excel-1.0.0-SNAPSHOT.jar -data-source ../src/test/resources/db.properties -file-name test -excel-type xls -filter-table user 
 
-# 导出xls (指定多个table - user role, 即只导入user role) 
+# 导出xls (指定多个table - user role, 即只导出user role) 
 java -jar mysql2excel-1.0.0-SNAPSHOT.jar -data-source ../src/test/resources/db.properties -file-name ../src/test/resources/test -excel-type xls -filter-table "user role" 
 
 # 导出xls (排除table - user) 
