@@ -1,0 +1,63 @@
+package com.joker17.mysql2excel.excel;
+
+public class IndexedColors {
+
+    public static final int BLACK1 = 0;
+    public static final int WHITE1 = 1;
+    public static final int RED1 = 2;
+    public static final int BRIGHT_GREEN1 = 3;
+    public static final int BLUE1 = 4;
+    public static final int YELLOW1 = 5;
+    public static final int PINK1 = 6;
+    public static final int TURQUOISE1 = 7;
+    public static final int BLACK = 8;
+    public static final int WHITE = 9;
+    public static final int RED = 10;
+    public static final int BRIGHT_GREEN = 11;
+    public static final int BLUE = 12;
+    public static final int YELLOW = 13;
+    public static final int PINK = 14;
+    public static final int TURQUOISE = 15;
+    public static final int DARK_RED = 16;
+    public static final int GREEN = 17;
+    public static final int DARK_BLUE = 18;
+    public static final int DARK_YELLOW = 19;
+    public static final int VIOLET = 20;
+    public static final int TEAL = 21;
+    public static final int GREY_25_PERCENT = 22;
+    public static final int GREY_50_PERCENT = 23;
+    public static final int CORNFLOWER_BLUE = 24;
+    public static final int MAROON = 25;
+    public static final int LEMON_CHIFFON = 26;
+    public static final int LIGHT_TURQUOISE1 = 27;
+    public static final int ORCHID = 28;
+    public static final int CORAL = 29;
+    public static final int ROYAL_BLUE = 30;
+    public static final int LIGHT_CORNFLOWER_BLUE = 31;
+    public static final int SKY_BLUE = 40;
+    public static final int LIGHT_TURQUOISE = 41;
+    public static final int LIGHT_GREEN = 42;
+    public static final int LIGHT_YELLOW = 43;
+    public static final int PALE_BLUE = 44;
+    public static final int ROSE = 45;
+    public static final int LAVENDER = 46;
+    public static final int TAN = 47;
+    public static final int LIGHT_BLUE = 48;
+    public static final int AQUA = 49;
+    public static final int LIME = 50;
+    public static final int GOLD = 51;
+    public static final int LIGHT_ORANGE = 52;
+    public static final int ORANGE = 53;
+    public static final int BLUE_GREY = 54;
+    public static final int GREY_40_PERCENT = 55;
+    public static final int DARK_TEAL = 56;
+    public static final int SEA_GREEN = 57;
+    public static final int DARK_GREEN = 58;
+    public static final int OLIVE_GREEN = 59;
+    public static final int BROWN = 60;
+    public static final int PLUM = 61;
+    public static final int INDIGO = 62;
+    public static final int GREY_80_PERCENT = 63;
+    public static final int AUTOMATIC = 64;
+
+}
