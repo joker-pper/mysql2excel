@@ -32,7 +32,7 @@ public class Mysql2ExcelRowWriteHandler extends AbstractRowWriteHandler {
 
     @Override
     public void afterRowDispose(WriteSheetHolder writeSheetHolder, WriteTableHolder writeTableHolder, Row row, Integer relativeRowIndex, Boolean isHead) {
-        if (Boolean.TRUE == isHead) {
+        if (Objects.equals(Boolean.TRUE, isHead)) {
             //首行时获取总列数
             totalCellNum = row.getPhysicalNumberOfCells();
             return;
