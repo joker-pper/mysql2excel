@@ -9,6 +9,9 @@ import java.util.Map;
 
 public class MysqlUtils {
 
+    private MysqlUtils() {
+    }
+
     /**
      * 获取数据库名称
      *

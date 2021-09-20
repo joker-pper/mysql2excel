@@ -3,6 +3,7 @@ package com.joker17.mysql2excel.core;
 import com.beust.jcommander.JCommander;
 import com.joker17.mysql2excel.constants.Mysql2ExcelConstants;
 import com.joker17.mysql2excel.param.Mysql2ExcelDumpParam;
+import org.slf4j.Logger;
 
 import java.io.IOException;
 import java.math.BigDecimal;
@@ -14,6 +15,8 @@ import java.time.format.DateTimeFormatter;
 public abstract class AbstractMysql2ExcelExecutor {
 
     private static final DateTimeFormatter DATE_TIME_FORMATTER = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+
+    protected final static Logger MAIN_LOG = Mysql2ExcelConstants.LOG;
 
     /**
      * 业务逻辑
@@ -41,7 +44,7 @@ public abstract class AbstractMysql2ExcelExecutor {
         }
 
         LocalDateTime start = LocalDateTime.now();
-        Mysql2ExcelConstants.LOG.info("start: {}", start.format(DATE_TIME_FORMATTER));
+        MAIN_LOG.info("start: {}", start.format(DATE_TIME_FORMATTER));
 
         //执行业务逻辑
         doWork(dumpParam);
@@ -50,8 +53,8 @@ public abstract class AbstractMysql2ExcelExecutor {
         Duration duration = Duration.between(start, end);
         BigDecimal result = BigDecimal.valueOf(duration.toMillis()).divide(BigDecimal.valueOf(1000)).setScale(2, RoundingMode.HALF_UP);
 
-        Mysql2ExcelConstants.LOG.info("end: {}", end.format(DATE_TIME_FORMATTER));
-        Mysql2ExcelConstants.LOG.info("time consuming: {} s", result);
+        MAIN_LOG.info("end: {}", end.format(DATE_TIME_FORMATTER));
+        MAIN_LOG.info("time consuming: {} s", result);
     }
 
 

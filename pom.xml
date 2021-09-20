@@ -21,7 +21,6 @@
         <slf4j-simple.version>1.7.25</slf4j-simple.version>
         <jacoco.version>0.8.6</jacoco.version>
         <jacoco.path>${project.build.directory}/jacoco.exec</jacoco.path>
-        <jacoco.report-aggregate.phase>test</jacoco.report-aggregate.phase>
         <jacoco.skip>false</jacoco.skip>
     </properties>
 

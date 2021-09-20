@@ -12,6 +12,9 @@ import java.util.stream.Collectors;
 
 public class Mysql2ExcelHelper {
 
+    private Mysql2ExcelHelper() {
+    }
+
     /**
      * 获取excelType
      *
@@ -19,8 +22,11 @@ public class Mysql2ExcelHelper {
      * @return
      */
     public static String getExcelType(String excelType) {
-        excelType = excelType == null || excelType.trim().isEmpty() ? Mysql2ExcelConstants.XLS : excelType.trim().toLowerCase(Locale.ROOT);
-        return excelType;
+        excelType = StringUtils.trimToNull(excelType);
+        if (excelType == null) {
+            return Mysql2ExcelConstants.XLS;
+        }
+        return StringUtils.toLowerCase(excelType);
     }
 
     /**

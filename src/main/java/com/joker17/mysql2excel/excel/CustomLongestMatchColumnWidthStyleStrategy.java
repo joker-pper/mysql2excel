@@ -42,7 +42,7 @@ public class CustomLongestMatchColumnWidthStyleStrategy extends AbstractColumnWi
             maxColumnWidthMap = new HashMap<Integer, Integer>(16);
             cache.put(writeSheetHolder.getSheetNo(), maxColumnWidthMap);
         }
-        Integer columnWidth = dataLength(cellDataList, cell, isHead);
+        int columnWidth = (int) (dataLength(cellDataList, cell, isHead) * 1.2F);
         if (columnWidth < 0) {
             return;
         }
@@ -60,12 +60,18 @@ public class CustomLongestMatchColumnWidthStyleStrategy extends AbstractColumnWi
         }
     }
 
-    private Integer dataLength(List<CellData> cellDataList, Cell cell, Boolean isHead) {
+    private int dataLength(List<CellData> cellDataList, Cell cell, Boolean isHead) {
         if (isHead) {
             return cell.getStringCellValue().getBytes().length;
         }
-        CellData cellData = cellDataList.get(0);
-        CellDataTypeEnum type = cellData.getType();
+
+        CellDataTypeEnum type = null;
+        CellData cellData = null;
+        if (cellDataList != null && !cellDataList.isEmpty()) {
+            cellData = cellDataList.get(0);
+            type = cellData.getType();
+        }
+
         if (type == null) {
             return -1;
         }

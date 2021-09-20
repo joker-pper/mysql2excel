@@ -31,6 +31,10 @@ public class StringUtils {
         return text == null ? null : text.toUpperCase(Locale.ROOT);
     }
 
+    public static String toLowerCase(String text) {
+        return text == null ? null : text.toLowerCase(Locale.ROOT);
+    }
+
     public static boolean equals(CharSequence left, CharSequence right) {
         if (left == right) {
             return true;

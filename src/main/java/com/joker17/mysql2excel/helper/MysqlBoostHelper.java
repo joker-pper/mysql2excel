@@ -1,6 +1,5 @@
 package com.joker17.mysql2excel.helper;
 
-
 import com.joker17.mysql2excel.enums.ColumnKeyTypeEnum;
 import com.joker17.mysql2excel.utils.StringUtils;
 
@@ -126,7 +125,6 @@ public class MysqlBoostHelper {
         return ColumnKeyTypeEnum.OTHER;
     }
 
-
     /**
      * 获取过滤后的columnExtra
      *
@@ -134,6 +132,18 @@ public class MysqlBoostHelper {
      * @return
      */
     public static String getFilteredColumnExtra(String columnExtra) {
-        return StringUtils.trimToNull(StringUtils.removeStart(StringUtils.toUpperCase(columnExtra), "DEFAULT_GENERATED"));
+        return getFilteredColumnExtra(columnExtra, false);
     }
+
+    /**
+     * 获取过滤后的columnExtra
+     *
+     * @param columnExtra
+     * @param toUpperCase
+     * @return
+     */
+    public static String getFilteredColumnExtra(String columnExtra, boolean toUpperCase) {
+        return StringUtils.trimToNull(StringUtils.removeStart(toUpperCase ? StringUtils.toUpperCase(columnExtra) : columnExtra, "DEFAULT_GENERATED"));
+    }
+
 }
