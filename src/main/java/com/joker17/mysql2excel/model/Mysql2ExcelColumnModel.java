@@ -12,7 +12,7 @@ import org.apache.poi.ss.usermodel.VerticalAlignment;
 @HeadFontStyle(fontName = "微软雅黑", bold = false, fontHeightInPoints = 12)
 @HeadStyle(fillForegroundColor = IndexedColors.WHITE)
 @ContentStyle(verticalAlignment = VerticalAlignment.CENTER, horizontalAlignment = HorizontalAlignment.CENTER)
-public class Mysql2ExcelModel {
+public class Mysql2ExcelColumnModel {
 
     /**
      * 数据库名称

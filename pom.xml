@@ -19,6 +19,10 @@
         <HikariCP.version>3.2.0</HikariCP.version>
         <spring-jdbc.version>5.1.9.RELEASE</spring-jdbc.version>
         <slf4j-simple.version>1.7.25</slf4j-simple.version>
+        <jacoco.version>0.8.6</jacoco.version>
+        <jacoco.path>${project.build.directory}/jacoco.exec</jacoco.path>
+        <jacoco.report-aggregate.phase>test</jacoco.report-aggregate.phase>
+        <jacoco.skip>false</jacoco.skip>
     </properties>
 
 
@@ -103,6 +107,48 @@
                             </transformers>
                             <createDependencyReducedPom>false</createDependencyReducedPom>
 
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+
+
+            <plugin>
+                <groupId>org.jacoco</groupId>
+                <artifactId>jacoco-maven-plugin</artifactId>
+                <version>${jacoco.version}</version>
+                <configuration>
+                    <skip>${jacoco.skip}</skip>
+                    <dataFile>${jacoco.path}</dataFile>
+                    <destFile>${jacoco.path}</destFile>
+                    <sessionId>jacoco_coverage</sessionId>
+                    <!-- 排除配置 -->
+                    <excludes>
+                        <exclude>**/constants/**</exclude>
+                        <exclude>**/enums/**</exclude>
+                        <exclude>**/param/**</exclude>
+                        <exclude>**/model/**</exclude>
+                        <exclude>**/excel/**</exclude>
+                        <exclude>**/Mysql2ExcelMain**</exclude>
+                    </excludes>
+                </configuration>
+                <executions>
+
+                    <execution>
+                        <id>pre-test</id>
+                        <phase>process-classes</phase>
+                        <goals>
+                            <goal>prepare-agent</goal>
+                        </goals>
+                    </execution>
+                    <execution>
+                        <id>post-unit-test</id>
+                        <phase>test</phase>
+                        <goals>
+                            <goal>report</goal>
+                        </goals>
+                        <configuration>
+                            <dataFile>target/jacoco.exec</dataFile>
                         </configuration>
                     </execution>
                 </executions>

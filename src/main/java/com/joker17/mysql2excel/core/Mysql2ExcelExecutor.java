@@ -6,7 +6,8 @@ import com.joker17.mysql2excel.db.JdbcUtils;
 import com.joker17.mysql2excel.db.MysqlUtils;
 import com.joker17.mysql2excel.excel.CustomLongestMatchColumnWidthStyleStrategy;
 import com.joker17.mysql2excel.excel.Mysql2ExcelRowWriteHandler;
-import com.joker17.mysql2excel.model.Mysql2ExcelModel;
+import com.joker17.mysql2excel.helper.MysqlBoostHelper;
+import com.joker17.mysql2excel.model.Mysql2ExcelColumnModel;
 import com.joker17.mysql2excel.param.Mysql2ExcelDumpParam;
 import com.joker17.mysql2excel.utils.FileUtils;
 import com.joker17.mysql2excel.helper.Mysql2ExcelHelper;
@@ -53,11 +54,11 @@ public class Mysql2ExcelExecutor extends AbstractMysql2ExcelExecutor {
         //获取所有的表
         List<String> tableNameList = MysqlUtils.getTableNameList(jdbcTemplate);
 
-        List<Mysql2ExcelModel> allMysql2ExcelModelList = new ArrayList<>(1024 * 2);
+        List<Mysql2ExcelColumnModel> allMysql2ExcelColumnModelList = new ArrayList<>(1024 * 2);
         tableNameList.forEach(tableName -> {
-            boolean isMatchResolve = Mysql2ExcelHelper.isMatchResolveTableName(filterTables, tableName, dumpParam.isExcludeMode());
+            boolean isMatchResolve = MysqlBoostHelper.isMatchResolveTableName(filterTables, tableName, dumpParam.isExcludeMode());
             if (isMatchResolve) {
-                allMysql2ExcelModelList.addAll(Mysql2ExcelHelper.getMysql2ExcelModelList(jdbcTemplate, database, tableName));
+                allMysql2ExcelColumnModelList.addAll(Mysql2ExcelHelper.getMysqlColumnModelList(jdbcTemplate, database, tableName));
             }
         });
 
@@ -70,12 +71,12 @@ public class Mysql2ExcelExecutor extends AbstractMysql2ExcelExecutor {
         //输出excel
         EasyExcel.write(new FileOutputStream(outExcelFile))
                 .excelType(Mysql2ExcelHelper.getExcelTypeEnum(excelType))
-                .head(Mysql2ExcelModel.class)
+                .head(Mysql2ExcelColumnModel.class)
                 .registerWriteHandler(new CustomLongestMatchColumnWidthStyleStrategy(2))
                 .registerWriteHandler(new Mysql2ExcelRowWriteHandler())
                 .useDefaultStyle(false)
                 .sheet("Sheet1")
-                .doWrite(allMysql2ExcelModelList);
+                .doWrite(allMysql2ExcelColumnModelList);
 
     }
 

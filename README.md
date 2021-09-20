@@ -6,6 +6,7 @@
 
 + 通过数据源导出xls xlsx
 + 支持筛选指定table
++ 支持导出单列索引类型
     
 
 ## 使用准备
@@ -24,7 +25,7 @@
    + [/src/test/resources/mysql2excel.sql](src/test/resources/mysql2excel.sql)
 ---
 
-#### 导出效果
+#### 导出效果 (以实际为准)
 
 ![effect](src/test/resources/effect.png)
 
@@ -54,5 +55,23 @@ java -jar mysql2excel-1.0.0-SNAPSHOT.jar -data-source ../src/test/resources/db.p
 
 # 导出xls (排除table - user) 
 java -jar mysql2excel-1.0.0-SNAPSHOT.jar -data-source ../src/test/resources/db.properties -file-name ../src/test/resources/test -excel-type xls -filter-table user -exclude 
+```
+
+
+### 其他
+
+```
+
+### COLUMN EXTRA ###
+
+auto_increment                      自增
+on update CURRENT_TIMESTAMP         根据当前时间戳更新
+
+### COLUMN KEY TYPE ###
+
+PK          主键
+UK          唯一键
+PK&UK       既是主键又是唯一键, e.g: code列: PK(name, code), UK(code)
+                 表示列不变
 ```
 
