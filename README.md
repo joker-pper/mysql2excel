@@ -4,9 +4,9 @@
     
 ## 功能
 
-+ 通过数据源导出xls xlsx
++ 通过数据源导出表结构到xls xlsx
++ 支持导出单列索引类型: PK/UK/PK&UK
 + 支持筛选指定table
-+ 支持导出单列索引类型
     
 
 ## 使用准备
@@ -72,6 +72,5 @@ on update CURRENT_TIMESTAMP         根据当前时间戳更新
 PK          主键
 UK          唯一键
 PK&UK       既是主键又是唯一键, e.g: code列: PK(name, code), UK(code)
-                 表示列不变
 ```
 
