@@ -72,7 +72,7 @@ public class Mysql2ExcelExecutor extends AbstractMysql2ExcelExecutor {
         EasyExcel.write(new FileOutputStream(outExcelFile))
                 .excelType(Mysql2ExcelHelper.getExcelTypeEnum(excelType))
                 .head(Mysql2ExcelColumnModel.class)
-                .registerWriteHandler(new CustomLongestMatchColumnWidthStyleStrategy(2))
+                .registerWriteHandler(new CustomLongestMatchColumnWidthStyleStrategy())
                 .registerWriteHandler(new Mysql2ExcelRowWriteHandler())
                 .useDefaultStyle(false)
                 .sheet("Sheet1")
