@@ -11,7 +11,7 @@ import java.util.concurrent.ConcurrentHashMap;
 
 public class DataSourceUtils {
 
-    private static Map<String, SoftReference<DataSource>> DATA_SOURCE_CACHE_MAP = new ConcurrentHashMap<>(16);
+    private static volatile Map<String, SoftReference<DataSource>> DATA_SOURCE_CACHE_MAP = new ConcurrentHashMap<>(16);
 
     private DataSourceUtils() {
     }
@@ -39,7 +39,7 @@ public class DataSourceUtils {
         String key = propertiesFile.getAbsolutePath();
         DataSource dataSource = getDataSourceByCache(key);
         if (dataSource == null) {
-            synchronized (JdbcUtils.class) {
+            synchronized (DataSourceUtils.class) {
                 dataSource = getDataSourceByCache(key);
                 if (dataSource == null) {
                     dataSource = initDataSourceByCache(key, propertiesFile);
