@@ -2,6 +2,7 @@ package com.joker17.mysql2excel.core;
 
 import com.alibaba.excel.EasyExcel;
 import com.joker17.mysql2excel.constants.Mysql2ExcelConstants;
+import com.joker17.mysql2excel.db.DataSourceUtils;
 import com.joker17.mysql2excel.db.JdbcUtils;
 import com.joker17.mysql2excel.db.MysqlUtils;
 import com.joker17.mysql2excel.excel.CustomLongestMatchColumnWidthStyleStrategy;
@@ -44,8 +45,8 @@ public class Mysql2ExcelExecutor extends AbstractMysql2ExcelExecutor {
         String filterTable = dumpParam.getFilterTable();
         Set<String> filterTables = new HashSet<>(Arrays.asList(filterTable == null || filterTable.length() == 0 ? new String[]{} : filterTable.split(" ")));
 
-        Properties properties = JdbcUtils.loadProperties(new FileInputStream(dataSourcePropertiesFile));
-        DataSource dataSource = JdbcUtils.getDataSource(properties);
+        //获取data source
+        DataSource dataSource = DataSourceUtils.getDataSourceByCache(dataSourcePropertiesFile);
         JdbcTemplate jdbcTemplate = JdbcUtils.getJdbcTemplate(dataSource);
 
         //获取数据库名称
