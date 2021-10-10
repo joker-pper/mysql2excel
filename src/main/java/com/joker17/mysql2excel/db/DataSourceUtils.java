@@ -1,5 +1,6 @@
 package com.joker17.mysql2excel.db;
 
+import com.joker17.mysql2excel.utils.FileUtils;
 import javax.sql.DataSource;
 import java.io.File;
 import java.io.FileInputStream;
@@ -36,7 +37,7 @@ public class DataSourceUtils {
      * @throws IOException
      */
     public static DataSource getDataSourceByCache(File propertiesFile) throws IOException {
-        String key = propertiesFile.getAbsolutePath();
+        String key = String.format("%s@%s", propertiesFile.getAbsolutePath(), FileUtils.md5DigestAsHex(propertiesFile));
         DataSource dataSource = getDataSourceByCache(key);
         if (dataSource == null) {
             synchronized (DataSourceUtils.class) {
